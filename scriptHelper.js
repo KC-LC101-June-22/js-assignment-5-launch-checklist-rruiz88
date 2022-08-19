@@ -50,30 +50,28 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
       alert("Please enter realistic names and not numbers")
      } else {
       //Change launch info for pilots
-      pilotStatus.innerHTML = `Pilot ${pilot} is ready`;
-      copilotStatus.innerHTML = `Co-pilot ${copilot} is ready`;
-      list.style.visibility = "hidden";
+      pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
+      copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
+      list.style.visibility = "visible";
 }
       //over/under fuel and cargo
       if(fuelLevel < 10000) {
          fuelStatus.innerHTML = "Not enough fuel for the journey!";
          launchStatus.innerHTML = "Shuttle Not Ready For Launch!";
-         launchStatus.style.color = "red";
+         launchStatus.style.color = "rgb(65, 159, 106)";
          list.style.visibility = "visible";
 }     else if (cargoLevel > 10000) {
          list.style.visibility = "visible";
-         cargoStatus.innerHTML = "There is too much mass for the shuttle to take off!";
+         cargoStatus.innerHTML = "Cargo mass too heavy for launch";
          launchStatus.innerHTML = "Shuttle Not Ready For Launch!";
-         launchStatus.style.color = "red";
+         launchStatus.style.color = "rgb(199, 37, 78)";
 }     else if (fuelLevel > 10000 && cargoLevel < 10000) {
          launchStatus.innerHTML = "Shuttle Ready For Launch!";
          launchStatus.style.color = "green";
          fuelStatus.innerHTML = "Fuel ready!";
-         cargoStatus.innerHTML = "Cargo ready!";
+         cargoStatus.innerHTML = "Cargo mass low enough for launch";
          list.style.visibility = "visible";
-} else {
-   list.style.visibility = "hidden";
-}
+} 
 }
 
 async function myFetch() {
