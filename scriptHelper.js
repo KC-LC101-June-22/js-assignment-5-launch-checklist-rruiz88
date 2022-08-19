@@ -1,5 +1,5 @@
 // Write your helper functions here!
-require('isomorphic-fetch');
+//require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
    // Here is the HTML formatting for our mission target div.
@@ -54,24 +54,34 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
       copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
       list.style.visibility = "visible";
 }
-      //over/under fuel and cargo
+      //LOW FUEL
       if(fuelLevel < 10000) {
          fuelStatus.innerHTML = "Not enough fuel for the journey!";
-         launchStatus.innerHTML = "Shuttle Not Ready For Launch!";
-         launchStatus.style.color = "rgb(65, 159, 106)";
+         launchStatus.innerHTML = "Shuttle Not Ready for launch";
+         launchStatus.style.color = "rgb(199, 37, 78)";
          list.style.visibility = "visible";
-}     else if (cargoLevel > 10000) {
+}   
+      //CARGO HIGH
+else if (cargoLevel > 10000) {
          list.style.visibility = "visible";
          cargoStatus.innerHTML = "Cargo mass too heavy for launch";
-         launchStatus.innerHTML = "Shuttle Not Ready For Launch!";
+         launchStatus.innerHTML = "Shuttle Not Ready for Launch!";
          launchStatus.style.color = "rgb(199, 37, 78)";
 }     else if (fuelLevel > 10000 && cargoLevel < 10000) {
-         launchStatus.innerHTML = "Shuttle Ready For Launch!";
-         launchStatus.style.color = "green";
+         launchStatus.innerHTML = "Shuttle Ready For launch!";
+         launchStatus.style.color = "rgb(65, 159, 106)";
          fuelStatus.innerHTML = "Fuel ready!";
          cargoStatus.innerHTML = "Cargo mass low enough for launch";
          list.style.visibility = "visible";
 } 
+      //FUEL LOW AND CARGO HEAVY
+   else  (fuelLevel < 10000 && cargoLevel > 10000) 
+   launchStatus.innerHTML = "Shuttle Not Ready for launch";
+   launchStatus.style.color = "red";
+   fuelStatus.innerHTML = "Not enough fuel for the journey";
+   cargoStatus.innerHTML = "Cargo mass too heavy for launch";
+   list.style.visibility = "visible";
+
 }
 
 async function myFetch() {
